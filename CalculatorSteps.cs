@@ -6,28 +6,36 @@ namespace SpecFlowPractice
     [Binding]
     public class CalculatorSteps
     {
+
+        private readonly ScenarioContext _scenarioContext;
+
+        public CalculatorSteps(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
+
         [Given(@"I have entered (.*) into the calculator")]
         public void GivenIHaveEnteredIntoTheCalculator(int p0)
         {
-            ScenarioContext.Current.Pending();
+            _scenarioContext.Pending();
         }
         
         [Given(@"I have also entered (.*) into the calculator")]
         public void GivenIHaveAlsoEnteredIntoTheCalculator(int p0)
         {
-            ScenarioContext.Current.Pending();
+            _scenarioContext.Pending();
         }
         
         [When(@"I press add")]
         public void WhenIPressAdd()
         {
-            ScenarioContext.Current.Pending();
+            _scenarioContext.Pending();
         }
         
         [Then(@"the result should be (.*) on the screen")]
         public void ThenTheResultShouldBeOnTheScreen(int p0)
         {
-            ScenarioContext.Current.Pending();
+            _scenarioContext.Pending();
         }
     }
 }
