@@ -1,11 +1,17 @@
 ﻿using System;
 using TechTalk.SpecFlow;
+using Example;
+using NUnit.Framework;
 
 namespace SpecFlowPractice
 {
     [Binding]
     public class CalculatorSteps
     {
+
+        private Calculator calculator = new Calculator();
+
+        private int result;
 
         private readonly ScenarioContext _scenarioContext;
 
@@ -15,27 +21,27 @@ namespace SpecFlowPractice
         }
 
         [Given(@"I have entered (.*) into the calculator")]
-        public void GivenIHaveEnteredIntoTheCalculator(int p0)
+        public void GivenIHaveEnteredIntoTheCalculator(int number)
         {
-            _scenarioContext.Pending();
+            calculator.firstNumber = number ;
         }
         
         [Given(@"I have also entered (.*) into the calculator")]
-        public void GivenIHaveAlsoEnteredIntoTheCalculator(int p0)
+        public void GivenIHaveAlsoEnteredIntoTheCalculator(int number)
         {
-            _scenarioContext.Pending();
+            calculator.secondNumber = number;
         }
         
         [When(@"I press add")]
         public void WhenIPressAdd()
         {
-            _scenarioContext.Pending();
+            result = calculator.Add();
         }
         
         [Then(@"the result should be (.*) on the screen")]
-        public void ThenTheResultShouldBeOnTheScreen(int p0)
+        public void ThenTheResultShouldBeOnTheScreen(int expectedResult)
         {
-            _scenarioContext.Pending();
+            Assert.AreEqual(expectedResult, result);
         }
     }
 }
